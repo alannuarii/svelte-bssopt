@@ -75,12 +75,12 @@
 			<div class="collapse" id="collapseExample2">
 				<div class="list-group ms-3">
 					<a
-						href="/forecast/today"
+						href="/output/bss1"
 						class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
 						><i class="bi-battery-full" /> BSS 1</a
 					>
 					<a
-						href="/forecast/tomorrow"
+						href="/output/bss2"
 						class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
 						><i class="bi-battery-full" /> BSS 2</a
 					>

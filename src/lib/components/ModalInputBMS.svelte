@@ -21,11 +21,11 @@
 					<div class="row">
 						<div class="col">
 							<label for="inputEmail4" class="form-label">Voltage (V)</label>
-							<input type="number" class="form-control form-control-sm" name="voltage" />
+							<input type="text" class="form-control form-control-sm" name="voltage" />
 						</div>
 						<div class="col">
 							<label for="inputEmail4" class="form-label">Temperature (C)</label>
-							<input type="number" class="form-control form-control-sm" name="temperature" />
+							<input type="text" class="form-control form-control-sm" name="temperature" />
 						</div>
 					</div>
 				</div>
