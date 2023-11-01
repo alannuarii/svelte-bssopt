@@ -20,7 +20,7 @@ export const actions = {
 };
 
 export const load = async () => {
-	const res = await fetch(`${API_ENDPOINT}/getbms`);
+	const res = await fetch(`${API_ENDPOINT}/getidbms`);
 	const data = await res.json();
 	return {
 		data: data

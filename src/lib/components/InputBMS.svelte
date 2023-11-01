@@ -76,10 +76,6 @@
 		font-weight: 600;
 		background-color: #43a6a3 !important;
 	}
-	h1 {
-		font-weight: 300;
-		margin: 0px;
-	}
 	h5 {
 		font-weight: 500;
 		margin: 0px;
