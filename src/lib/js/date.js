@@ -59,7 +59,7 @@ export const formatTanggal = (tanggal) => {
 	const mm = String(tanggal.getMonth() + 1).padStart(2, '0');
 	const yyyy = tanggal.getFullYear();
 	return dd + '/' + mm + '/' + yyyy;
-    // 27/10/2023
+	// 27/10/2023
 };
 
 export const date2 = (tanggal) => {
@@ -102,3 +102,33 @@ export function date(tanggal) {
 	return result;
 	// 'Senin, 20 Februari 2023'
 }
+
+export const date3 = (waktu) => {
+	// Format input tanggal
+	const inputDateString = waktu;
+	const inputDate = new Date(inputDateString);
+
+	// Mendapatkan jam dan menit
+	const hours = inputDate.getUTCHours();
+	const minutes = inputDate.getUTCMinutes();
+
+	// Mengonversi ke format "HH:MM"
+	const formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+	return formattedTime
+
+	// convert  Fri, 27 Oct 2023 05:00:00 GMT menjadi 05:00 
+};
+
+export const date4 = (tanggal) => {
+	const parsedDate = new Date(tanggal);
+	const formattedDate = `${parsedDate.getDate().toString().padStart(2, '0')}-${(
+		parsedDate.getMonth() + 1
+	)
+		.toString()
+		.padStart(2, '0')}-${parsedDate.getFullYear()}`;
+
+	return formattedDate;
+
+	// convert from Fri, 05 May 2023 00:00:00 GMT to 05-05-2023
+};

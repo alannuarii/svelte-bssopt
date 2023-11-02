@@ -55,6 +55,11 @@
 							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
 							><i class="bi-battery-full" /> BSS 2</a
 						>
+						<a
+							href="/input/irradiance"
+							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
+							><i class="bi-battery-full" /> Irradiance</a
+						>
 					</div>
 				</div>
 			</li>
@@ -88,7 +93,7 @@
 			</div>
 		</li>
 		<li class="nav-item">
-			<a href="/rekap" class="nav-link text-secondary" aria-current="page"
+			<a href="/optimization" class="nav-link text-secondary" aria-current="page"
 				><i class="bi-battery-charging text-primary p-1 me-2" /> Optimization Result
 			</a>
 		</li>
