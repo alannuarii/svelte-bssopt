@@ -34,7 +34,7 @@
 	<div class="row gx-0">
 		{#each datas as data, index}
 			<div class="col-4 d-flex flex-column">
-				<ChartIrradiance x={data.x} y={data.y} tanggal={data.tanggal} />
+				<ChartIrradiance x={data.x} y={data.y} tanggal="{data.tanggal}" display={{displayModeBar: false}} />
 				<div class="d-flex justify-content-center">
 					<button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#chart{index}"
 						>Detail</button

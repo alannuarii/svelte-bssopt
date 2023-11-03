@@ -46,6 +46,11 @@
 				<div class="collapse" id="collapseExample">
 					<div class="list-group ms-3">
 						<a
+							href="/input/irradiance"
+							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
+							><i class="bi-battery-full" /> Basic Data</a
+						>
+						<a
 							href="/input/bss1"
 							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
 							><i class="bi-battery-full" /> BSS 1</a
@@ -54,11 +59,6 @@
 							href="/input/bss2"
 							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
 							><i class="bi-battery-full" /> BSS 2</a
-						>
-						<a
-							href="/input/irradiance"
-							class="list-group-item list-group-item-action bg-transparent text-secondary border border-0"
-							><i class="bi-battery-full" /> Irradiance</a
 						>
 					</div>
 				</div>

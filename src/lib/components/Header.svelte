@@ -9,7 +9,9 @@
 <nav class="navbar bg-light-subtle shadow">
 	<div class="container-fluid">
 		<!-- svelte-ignore a11y-invalid-attribute -->
-		<a class="navbar-brand" href="#">Batteries Storage System Optimization</a>
+		<a class="navbar-brand text-dark ms-3 d-flex align-items-center" href="/"
+			>MAMOLE<span class="ms-2">| Machine Learning Based Modelling for Energy Storage</span></a
+		>
 		<div class="ms-auto me-5"><Timer /></div>
 		<div class="me-4 reload">
 			<button on:click={reload}
@@ -70,5 +72,10 @@
 	}
 	.user:hover {
 		color: #43a6a3 !important;
+	}
+	span {
+		font-weight: 100;
+		font-size: smaller;
+		margin: 0px;
 	}
 </style>

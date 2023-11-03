@@ -5,7 +5,8 @@
 	export let y;
 	export let width;
 	export let height;
-    export let tanggal
+	export let tanggal;
+	export let display;
 
 	let plotlyContainer;
 
@@ -19,7 +20,7 @@
 			line: {
 				color: 'rgb(67, 166, 163)',
 				width: 1
-			},
+			}
 		};
 
 		const data = [trace1];
@@ -36,7 +37,7 @@
 			height: height
 		};
 
-		Plotly.newPlot(plotlyContainer, data, layout);
+		Plotly.newPlot(plotlyContainer, data, layout, display);
 	});
 </script>
 
