@@ -115,9 +115,9 @@ export const date3 = (waktu) => {
 	// Mengonversi ke format "HH:MM"
 	const formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
 
-	return formattedTime
+	return formattedTime;
 
-	// convert  Fri, 27 Oct 2023 05:00:00 GMT menjadi 05:00 
+	// convert  Fri, 27 Oct 2023 05:00:00 GMT menjadi 05:00
 };
 
 export const date4 = (tanggal) => {
@@ -131,4 +131,85 @@ export const date4 = (tanggal) => {
 	return formattedDate;
 
 	// convert from Fri, 05 May 2023 00:00:00 GMT to 05-05-2023
+};
+
+export const date5 = (waktu) => {
+	// Format input tanggal
+	const inputDateString = waktu;
+	const inputDate = new Date(inputDateString);
+
+	// Mendapatkan jam, menit, dan detik
+	const hours = inputDate.getUTCHours();
+	const minutes = inputDate.getUTCMinutes();
+	const seconds = inputDate.getUTCSeconds();
+
+	// Mengonversi ke format "HH:MM:SS"
+	const formattedTime =
+		(hours < 10 ? '0' : '') +
+		hours +
+		':' +
+		(minutes < 10 ? '0' : '') +
+		minutes +
+		':' +
+		(seconds < 10 ? '0' : '') +
+		seconds;
+
+	return formattedTime;
+};
+
+export const getThreeDays = () => {
+	const currentDate = new Date();
+
+	// Buat array untuk menyimpan 3 tanggal terakhir, termasuk hari ini
+	let threeDaysArray = [];
+
+	// Loop untuk menghasilkan 3 tanggal terakhir, termasuk hari ini
+	for (let i = 0; i < 3; i++) {
+		// Dapatkan tahun, bulan, dan tanggal dalam bentuk YYYY-MM-DD
+		const year = currentDate.getFullYear();
+		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		const day = String(currentDate.getDate()).padStart(2, '0');
+		const formattedDate = year + '-' + month + '-' + day;
+
+		// Tambahkan tanggal ke dalam array
+		threeDaysArray.push(formattedDate);
+
+		// Kurangkan 1 hari dari tanggal saat ini
+		currentDate.setDate(currentDate.getDate() - 1);
+	}
+
+	return threeDaysArray;
+	// [ '2023-11-04', '2023-11-03', '2023-11-02' ]
+};
+
+export const getTomorrow = () => {
+	const months = [
+		'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	];
+
+	// Buat objek tanggal untuk tanggal hari ini
+	const today = new Date();
+
+	// Tambahkan 1 hari ke tanggal hari ini untuk mendapatkan tanggal besok
+	today.setDate(today.getDate() + 1);
+
+	// Dapatkan tanggal besok dalam format "DD NamaBulan YYYY"
+	const dd = String(today.getDate()).padStart(2, '0');
+	const mm = months[today.getMonth()];
+	const yyyy = today.getFullYear();
+
+	const tomorrow = dd + ' ' + mm + ' ' + yyyy;
+
+	return tomorrow;
 };

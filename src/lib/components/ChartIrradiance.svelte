@@ -5,7 +5,7 @@
 	export let y;
 	export let width;
 	export let height;
-	export let tanggal;
+	export let title;
 	export let display;
 
 	let plotlyContainer;
@@ -26,7 +26,7 @@
 		const data = [trace1];
 
 		const layout = {
-			title: `Irradiance ${tanggal}`,
+			title: title,
 			xaxis: {
 				title: 'Time'
 			},
