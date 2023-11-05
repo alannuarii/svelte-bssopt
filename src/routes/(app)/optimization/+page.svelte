@@ -4,11 +4,11 @@
 	import { date4, date5, getTomorrow } from '../../../lib/js/date';
 
 	export let data;
-	const irr1 = data.data1.data.length > 0 ? data.data1.data : [];
-	const irr2 = data.data2.data.length > 0 ? data.data2.data : [];
-	const irr3 = data.data3.data.length > 0 ? data.data3.data : [];
-	const avgIrr = data.data4.data.length > 0 ? data.data4.data : [];
-	const maxIrr = data.data5.data.length > 0 ? data.data5.data : [];
+	const irr1 = data.data1.length > 0 ? data.data1 : [];
+	const irr2 = data.data2.length > 0 ? data.data2 : [];
+	const irr3 = data.data3.length > 0 ? data.data3 : [];
+	const avgIrr = data.data4.length > 0 ? data.data4 : [];
+	const maxIrr = data.data5.length > 0 ? data.data5 : [];
 
 	const x1 = irr1.map((item) => date5(item.waktu));
 	const y1 = irr1.map((item) => item.irradiance);
