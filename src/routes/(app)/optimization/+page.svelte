@@ -26,16 +26,25 @@
 	const y4 = avgIrr.map((item) => item.irradiance);
 	const sumAvg = avgIrr.map((item) => item.irradiance / 360);
 	const totalAvg = sumAvg.reduce((acc, cur) => acc + cur, 0);
-	const forecastProduksiPV = totalAvg * 6.8
+	const forecastProduksiPV = totalAvg * 6.8 * 0.1917;
 
 	const x5 = maxIrr.map((item) => date5(item.waktu));
 	const y5 = maxIrr.map((item) => item.irradiance);
 	const sumMax = maxIrr.map((item) => item.irradiance / 360);
 	const totalMax = sumMax.reduce((acc, cur) => acc + cur, 0);
-	const forecastProduksiPVBSS = totalMax * 6.8
+	const forecastProduksiPVBSS = totalMax * 6.8 * 0.1917;
 
-	const forecastSmooting = forecastProduksiPVBSS - forecastProduksiPV
-	const kebutuhanDoD = forecastSmooting / 900 * 100
+	const arrayRampRate = [];
+
+	for (let i = 1; i < y4.length; i++) {
+		const selisih = y4[i] - y4[i - 1];
+		arrayRampRate.push(Math.abs(selisih));
+	}
+
+	const forecastSmooting = forecastProduksiPVBSS - forecastProduksiPV;
+	const kebutuhanDoD = (forecastSmooting / 900) * 100;
+	const maxBebanBSS = Math.max(...y4) * 6.8 * 0.1917;
+	const rampRate = Math.max(...arrayRampRate) * 6.8 * 0.1917
 
 	const datas = [
 		{ x: x1, y: y1, tanggal: tanggal1[0] },
@@ -66,33 +75,52 @@
 			</div>
 		{/each}
 	</div>
-	<div class="mb-4">
-		<ChartIrradiance x={x4} y={y4} title={'Forecast Produksi PV'} />
-	</div>
 	<div class="mb-5">
-		<ChartIrradiance x={x5} y={y5} title={'Forecast Produksi PV + BSS'}/>
+		<ChartIrradiance x={x4} y={y4} title={`Forecast Global Irradiance ${getTomorrow()}`} />
 	</div>
+	<!-- <div class="mb-5">
+		<ChartIrradiance x={x5} y={y5} title={'Forecast Produksi PV + BSS'} />
+	</div> -->
 	<div class="row border rounded-4 px-2 py-3 shadow">
 		<div class="col-6">
 			<h5 class="mb-3">Forecast Produksi {getTomorrow()}</h5>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-6 col-form-label">Forecast Total Produksi PV</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value="{forecastProduksiPV.toFixed(2)}" disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={forecastProduksiPV.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kWh</label>
 			</div>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-6 col-form-label">Forecast Kebutuhan Smoothing BSS</label>
+				<label for="inputPassword" class="col-6 col-form-label"
+					>Forecast Kebutuhan Smoothing BSS</label
+				>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value="{forecastSmooting.toFixed(2)}" disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={forecastSmooting.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kWh</label>
 			</div>
 			<div class="row">
-				<label for="inputPassword" class="col-6 col-form-label">Forecast Total Produksi PV + BSS</label>
+				<label for="inputPassword" class="col-6 col-form-label"
+					>Forecast Total Produksi PV + BSS</label
+				>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value="{forecastProduksiPVBSS.toFixed(2)}" disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={forecastProduksiPVBSS.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kWh</label>
 			</div>
@@ -100,9 +128,16 @@
 		<div class="col-6">
 			<h5 class="mb-3">Rekomendasi Setting Parameter {getTomorrow()}</h5>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-6 col-form-label">Kebutuhan %DoD yang Dibutuhkan</label>
+				<label for="inputPassword" class="col-6 col-form-label"
+					>Kebutuhan %DoD yang Dibutuhkan</label
+				>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value="{kebutuhanDoD.toFixed(2)}" disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={kebutuhanDoD.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">%</label>
 			</div>
@@ -116,14 +151,14 @@
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting Ramp Rate</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" disabled />
+					<input type="text" class="form-control text-center" value="{rampRate.toFixed(2)}" disabled />
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kW/s</label>
 			</div>
 			<div class="row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting Max Beban BSS</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" disabled />
+					<input type="text" class="form-control text-center" value={maxBebanBSS.toFixed(2)} disabled />
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kW</label>
 			</div>
@@ -141,7 +176,7 @@
 	.btn:hover {
 		background-color: #43a6a3df;
 	}
-	h5{
+	h5 {
 		font-weight: 700;
 		color: #43a6a3;
 	}

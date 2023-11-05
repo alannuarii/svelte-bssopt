@@ -31,7 +31,7 @@
 				title: 'Time'
 			},
 			yaxis: {
-				title: 'Global Irradiance'
+				title: 'Global Irradiance (watt/m2)'
 			},
 			width: width,
 			height: height

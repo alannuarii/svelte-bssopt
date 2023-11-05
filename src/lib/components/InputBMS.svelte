@@ -23,7 +23,7 @@
 				disabled
 			/>
 		</div>
-		<div class="col-1 text-center"><h5>sampai</h5></div>
+		<div class="col-1 text-center"><h5>hingga</h5></div>
 		<div class="col-2">
 			<input
 				type="text"
