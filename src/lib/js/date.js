@@ -214,3 +214,15 @@ export const getTomorrow = () => {
 	return tomorrow;
 	// 05 November 2023
 };
+
+export const konversiTahunBulan = (angkaDesimal) => {
+	// Menghitung jumlah bulan dari angka desimal
+	const totalBulan = Math.floor(angkaDesimal * 12);
+
+	// Menghitung tahun dan bulan
+	const tahun = Math.floor(totalBulan / 12);
+	const bulan = totalBulan % 12;
+
+	return tahun + ' Tahun ' + bulan + ' Bulan';
+	// Konversi 5.5 menjadi 5 Tahun 6 Bulan 
+};

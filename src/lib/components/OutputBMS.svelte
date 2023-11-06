@@ -1,10 +1,16 @@
 <script>
-	import { arrayDate } from '../js/date';
+	import { arrayDate, konversiTahunBulan } from '../js/date';
 
 	export let numBSS;
 	export let dataBMS;
 
 	const tanggalData = arrayDate();
+	
+
+	// Contoh penggunaan
+	var angkaDesimal = 5.5;
+	var hasilKonversi = konversiTahunBulan(angkaDesimal);
+	console.log(hasilKonversi); // Output: "5 Tahun 6 Bulan"
 </script>
 
 <section>
@@ -74,7 +80,7 @@
 				</div>
 				<div class="row">
 					<div class="col-1"><h6>Usia:</h6></div>
-					<div class="col text-start"><h6>5 tahun</h6></div>
+					<div class="col text-start"><h6>{konversiTahunBulan(bms.rul / 365)}</h6></div>
 				</div>
 			</div>
 		{/each}
@@ -90,7 +96,7 @@
 		font-weight: 700;
 	}
 	.output h6 {
-		font-size: 9px;
+		font-size: 8px;
 		margin: 0;
 	}
 	.output p {
