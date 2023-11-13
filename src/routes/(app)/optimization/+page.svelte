@@ -7,7 +7,7 @@
 	const irr1 = data.data1.length > 0 ? data.data1 : [];
 	const irr2 = data.data2.length > 0 ? data.data2 : [];
 	const irr3 = data.data3.length > 0 ? data.data3 : [];
-	const avgIrr = data.data4.length > 0 ? data.data4 : [];
+	const minIrr = data.data4.length > 0 ? data.data4 : [];
 	const maxIrr = data.data5.length > 0 ? data.data5 : [];
 
 	const x1 = irr1.map((item) => date5(item.waktu));
@@ -22,11 +22,11 @@
 	const y3 = irr3.map((item) => item.irradiance);
 	const tanggal3 = irr3.map((item) => date4(item.waktu));
 
-	const x4 = avgIrr.map((item) => date5(item.waktu));
-	const y4 = avgIrr.map((item) => item.irradiance);
-	const sumAvg = avgIrr.map((item) => item.irradiance / 360);
-	const totalAvg = sumAvg.reduce((acc, cur) => acc + cur, 0);
-	const forecastProduksiPV = totalAvg * 6.8 * 0.1917;
+	const x4 = minIrr.map((item) => date5(item.waktu));
+	const y4 = minIrr.map((item) => item.irradiance);
+	const sumMin = minIrr.map((item) => item.irradiance / 360);
+	const totalmin = sumMin.reduce((acc, cur) => acc + cur, 0);
+	const forecastProduksiPV = totalmin * 6.8 * 0.1917;
 
 	const x5 = maxIrr.map((item) => date5(item.waktu));
 	const y5 = maxIrr.map((item) => item.irradiance);
@@ -35,16 +35,27 @@
 	const forecastProduksiPVBSS = totalMax * 6.8 * 0.1917;
 
 	const arrayRampRate = [];
-
 	for (let i = 1; i < y4.length; i++) {
-		const selisih = y4[i] - y4[i - 1];
-		arrayRampRate.push(Math.abs(selisih));
+		const selisih = y5[i + 1] - y4[i];
+		if (!isNaN(selisih)) {
+			arrayRampRate.push(selisih);
+		}
+	}
+	// console.log(isNaN(NaN));
+
+	const arrayMaxBeban = [];
+	for (let i = 1; i < y4.length; i++) {
+		const selisih = y5[i] - y4[i];
+		arrayMaxBeban.push(selisih);
 	}
 
 	const forecastSmooting = forecastProduksiPVBSS - forecastProduksiPV;
 	const kebutuhanDoD = (forecastSmooting / 900) * 100;
-	const maxBebanBSS = Math.max(...y4) * 6.8 * 0.1917;
-	const rampRate = Math.max(...arrayRampRate) * 6.8 * 0.1917
+	const maxBebanBSS =
+		Math.max(...arrayMaxBeban) * 6.8 * 0.1917 < 600
+			? Math.max(...arrayMaxBeban) * 6.8 * 0.1917
+			: 600;
+	const rampRate = Math.max(...arrayRampRate) * 6.8 * 0.1917 < 200 ? Math.max(...arrayRampRate) * 6.8 * 0.1917 : 200;
 
 	const datas = [
 		{ x: x1, y: y1, tanggal: tanggal1[0] },
@@ -144,21 +155,26 @@
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting C-rate</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" disabled />
+					<input type="text" class="form-control text-center" value="0.2" disabled />
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">C</label>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting Ramp Rate</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value="{rampRate.toFixed(2)}" disabled />
+					<input type="text" class="form-control text-center" value={rampRate == 200 ? 200 : rampRate.toFixed(2)} disabled />
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kW/s</label>
 			</div>
 			<div class="row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting Max Beban BSS</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value={maxBebanBSS.toFixed(2)} disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={maxBebanBSS.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kW</label>
 			</div>

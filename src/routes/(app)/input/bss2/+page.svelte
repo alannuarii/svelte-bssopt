@@ -19,4 +19,4 @@
 	const numRak = [rak1, rak2, rak3, rak4, rak5, rak6, rak7, rak8];
 </script>
 
-<InputBms {numRak} {idBMS} numBSS={1} />
+<InputBms {numRak} {idBMS} numBSS={2} />

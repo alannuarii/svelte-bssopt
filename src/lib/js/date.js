@@ -95,6 +95,14 @@ export const getToday = () => {
 	// 2023-02-21 tanggal hari ini
 };
 
+export const getYesterday = () => {
+	let tomorrow = new Date();
+	tomorrow.setHours(tomorrow.getHours() - 16);
+	tomorrow = tomorrow.toISOString().slice(0, 10);
+	return tomorrow;
+	// 2023-02-21 tanggal hari ini
+};
+
 export function date(tanggal) {
 	const date = new Date(tanggal);
 	const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -224,5 +232,13 @@ export const konversiTahunBulan = (angkaDesimal) => {
 	const bulan = totalBulan % 12;
 
 	return tahun + ' Tahun ' + bulan + ' Bulan';
-	// Konversi 5.5 menjadi 5 Tahun 6 Bulan 
+	// Konversi 5.5 menjadi 5 Tahun 6 Bulan
 };
+
+export function convertDate(tanggal) {
+	const date = new Date(tanggal);
+	const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+	const result = date.toLocaleDateString('id-ID', options);
+	return result;
+	// 'Senin, 20 Februari 2023'
+}
