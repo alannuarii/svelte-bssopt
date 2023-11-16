@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { API_AUTH } from '$env/static/private';
 
 
 export const actions = {
@@ -14,7 +14,7 @@ export const actions = {
 			parsedData[name] = value;
 		}
 
-		const res = await fetch('https://sierrajs.alanpy.xyz/login', {
+		const res = await fetch(`${API_AUTH}/login`, {
 			method: 'POST',
 			body: JSON.stringify(parsedData),
 			headers: {

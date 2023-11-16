@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from '../../lib/js/endpoint';
+import { API_ENDPOINT } from '$env/static/private';
 import { getYesterday, getToday } from '../../lib/js/date';
 
 export const load = async () => {
