@@ -1,4 +1,5 @@
 import { API_AUTH } from '$env/static/private';
+import { redirect } from '@sveltejs/kit';
 
 
 export const actions = {
