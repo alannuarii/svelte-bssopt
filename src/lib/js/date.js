@@ -242,3 +242,16 @@ export function convertDate(tanggal) {
 	return result;
 	// 'Senin, 20 Februari 2023'
 }
+
+export const getBefore4Day = () => {
+	var dateArray = [];
+
+	for (let i = 0; i < 4; i++) {
+		let date = new Date();
+		date.setHours(date.getHours() + 8);
+		date.setDate(date.getDate() - i);
+		dateArray.push(date.toISOString().slice(0, 10));
+	}
+	return dateArray;
+	// [ '2023-05-09', '2023-05-08', '2023-05-07', '2023-05-06' ]
+};

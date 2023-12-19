@@ -1,4 +1,10 @@
 <script>
+	import { getBefore4Day } from '../../../../lib/js/date';
+
+	export let data;
+	const dates = data.data1.data.length > 0 ? data.data1.data : [];
+	const fourDays = getBefore4Day();
+
 	const handleFileUpload = (event) => {
 		const check = event.target.files[0].type;
 		if (check === 'text/csv') {
@@ -7,6 +13,26 @@
 			checkFileUpload = false;
 		}
 	};
+
+	const savedData = dates.map((obj) => {
+		const tanggalObj = new Date(obj.tanggal);
+		return tanggalObj.toLocaleDateString('id-ID', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		});
+	});
+
+	const arrayDays = fourDays.map((tanggal) => {
+		const tanggalObj = new Date(tanggal);
+		return tanggalObj.toLocaleDateString('id-ID', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		});
+	});
+
+	console.log(savedData[3]);
 </script>
 
 <section>
@@ -16,11 +42,24 @@
 				<h1 class="mb-4 text-center">DATA IRRADIANCE</h1>
 			</div>
 			<div class="row mb-3 border shadow-sm p-4">
-				<div class="mb-4">
+				<div class="">
 					<label for="exampleFormControlInput2" class="form-label">Upload File</label>
 					<input type="file" class="form-control" name="irradiance" on:change={handleFileUpload} />
 				</div>
-				<div>
+				<div class="px-3 py-2"><h6>Data terakhir : {savedData[3]}</h6></div>
+				<div class="d-flex flex-wrap justify-content-evenly mt-2">
+					{#each arrayDays as day}
+						<p class="tanggal">
+							<i
+								class={savedData.includes(day)
+									? 'bi-check-square-fill text-success'
+									: 'bi-x-square-fill text-danger'}
+							/>
+							{day}
+						</p>
+					{/each}
+				</div>
+				<div class="mt-4">
 					<p class="mb-2">Keterangan:</p>
 					<ul>
 						<li>Ekstensi file adalah .csv</li>
@@ -51,5 +90,15 @@
 	}
 	.border {
 		border-radius: 25px;
+	}
+	h6 {
+		margin: 0px;
+		font-size: 13px;
+		font-style: italic;
+		font-weight: 600;
+	}
+	.tanggal {
+		margin: 0px;
+		font-size: 13px;
 	}
 </style>

@@ -16,3 +16,13 @@ export const actions = {
 		return res.json();
 	}
 };
+
+
+export const load = async () => {
+	const res = await fetch(`${API_ENDPOINT}/getlast4days`);
+	const data = await res.json();
+
+	return {
+		data1: data
+	};
+};
