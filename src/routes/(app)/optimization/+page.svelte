@@ -41,7 +41,6 @@
 			arrayRampRate.push(selisih);
 		}
 	}
-	// console.log(isNaN(NaN));
 
 	const arrayMaxBeban = [];
 	for (let i = 1; i < y4.length; i++) {
