@@ -21,8 +21,8 @@ RUN npm ci
 # Salin seluruh aplikasi ke dalam container
 COPY . .
 
-# Tambahkan langkah untuk menggunakan dotenv pada saat build
-RUN node -r dotenv/config npm run build
+# Tambahkan langkah untuk menggunakan dotenv pada saat build dan jalankan skrip build dari node_modules
+RUN node -r dotenv/config $(npm bin)/vite build
 
 # Expose port yang digunakan oleh aplikasi
 EXPOSE 3000
