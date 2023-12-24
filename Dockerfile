@@ -28,4 +28,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Jalankan aplikasi saat container dijalankan
-CMD ["npm", "start"]
+CMD ["node", "build/index.js"]
