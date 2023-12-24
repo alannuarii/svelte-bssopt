@@ -24,8 +24,5 @@ COPY . .
 # Build aplikasi
 RUN npm run build
 
-# Expose port yang digunakan oleh aplikasi
-EXPOSE 3000
-
 # Jalankan aplikasi saat container dijalankan
 CMD ["node", "build/index.js"]
