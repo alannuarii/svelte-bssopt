@@ -16,15 +16,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependensi npm
-RUN npm ci
+RUN npm ci --omit dev
 
 # Salin seluruh aplikasi ke dalam container
 COPY . .
 
 # Tambahkan langkah untuk menggunakan dotenv pada saat build dan jalankan skrip build dari node_modules
-RUN node -r dotenv/config
-
-RUN node build
+RUN node -r dotenv/config $(npm bin)/vite build
 
 # Expose port yang digunakan oleh aplikasi
 EXPOSE 3000
