@@ -21,8 +21,11 @@ RUN npm ci
 # Salin seluruh aplikasi ke dalam container
 COPY . .
 
-# Build aplikasi
-RUN npm run build
+# Tambahkan langkah untuk menggunakan dotenv pada saat build
+RUN node -r dotenv/config npm run build
+
+# Expose port yang digunakan oleh aplikasi
+EXPOSE 3000
 
 # Jalankan aplikasi saat container dijalankan
 CMD ["node", "build/index.js"]
