@@ -1,14 +1,6 @@
 # Gunakan node image sebagai base image dengan versi yang diinginkan
 FROM node:18-alpine
 
-# Define ARG untuk environment variables
-ARG API_ENDPOINT
-ARG API_AUTH
-
-# Set environment variables
-ENV API_ENDPOINT=$API_ENDPOINT
-ENV API_AUTH=$API_AUTH
-
 # Set working directory di dalam container
 WORKDIR /app
 
@@ -16,12 +8,15 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependensi npm
-RUN npm ci --omit dev
+RUN npm ci
 
 # Salin seluruh aplikasi ke dalam container
 COPY . .
 
-# Tambahkan langkah untuk menggunakan dotenv pada saat build dan jalankan skrip build dari node_modules
+# Instal dotenv untuk mode produksi
+RUN npm install dotenv
+
+# Jalankan dotenv/config sebelum menjalankan build
 RUN node -r dotenv/config $(npm bin)/vite build
 
 # Expose port yang digunakan oleh aplikasi
