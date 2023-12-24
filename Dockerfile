@@ -24,6 +24,8 @@ COPY . .
 # Tambahkan langkah untuk menggunakan dotenv pada saat build dan jalankan skrip build dari node_modules
 RUN node -r dotenv/config build
 
+RUN node build
+
 # Expose port yang digunakan oleh aplikasi
 EXPOSE 3000
 
