@@ -17,8 +17,7 @@ COPY . .
 RUN npm install dotenv
 
 # Jalankan dotenv/config sebelum menjalankan build
-RUN node -r dotenv/config $(npm bin)/vite build
-
+RUN npm run build
 # Expose port yang digunakan oleh aplikasi
 EXPOSE 3000
 
