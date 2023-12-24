@@ -13,4 +13,6 @@ ARG API_AUTH
 ENV API_ENDPOINT=$API_ENDPOINT
 ENV API_AUTH=$API_AUTH
 
-CMD ["npm", "run", "dev"]
+RUN npm run build && npm prune --production
+
+CMD ["node", "build/index.js"]
