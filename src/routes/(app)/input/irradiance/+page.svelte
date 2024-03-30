@@ -41,7 +41,7 @@
 			<div>
 				<h1 class="mb-4 text-center">DATA IRRADIANCE</h1>
 			</div>
-			<div class="row mb-3 border shadow-sm p-4">
+			<div class="row mb-3 border shadow-sm p-4 bg-white">
 				<div class="">
 					<label for="exampleFormControlInput2" class="form-label">Upload File</label>
 					<input type="file" class="form-control" name="irradiance" on:change={handleFileUpload} />

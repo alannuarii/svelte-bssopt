@@ -51,7 +51,7 @@
 <section>
 	<div class="row">
 		<div class="col-9">
-			<div class="border rounded-5 ps-5 pt-3 pb-4 shadow">
+			<div class="border rounded-5 ps-5 pt-3 pb-4 shadow bg-white">
 				<div class="text-center mb-3 setting">
 					<h3 class="">REKOMENDASI SETTING BSS</h3>
 					<h4 class="">{convertDate(getToday())}</h4>
@@ -161,7 +161,7 @@
 			</div>
 		</div>
 		<div class="col-3">
-			<div class="border rounded-5 shadow py-4">
+			<div class="border rounded-5 shadow py-4 bg-white">
 				<div class="text-center mb-3 bss">
 					<h3 class="">KETERSEDIAAN BSS</h3>
 					<h4 class="">{convertDate(getToday())}</h4>

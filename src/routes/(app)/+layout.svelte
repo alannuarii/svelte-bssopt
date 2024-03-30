@@ -17,7 +17,7 @@
 			<div class="header position-absolute top-0 start-50 translate-middle-x">
 				<Header />
 			</div>
-			<div class="content px-5 bg-white">
+			<div class="content px-5">
 				<slot />
 			</div>
 		</div>
@@ -25,18 +25,20 @@
 </main>
 
 <style>
-    main{
-        overflow-x: hidden;
-    }
+	main {
+		overflow-x: hidden;
+		background-image: url('../../lib/img/bg.jpg');
+		background-size: cover;
+	}
 	.header {
 		width: 100%;
-        z-index: 1;
+		z-index: 1;
 	}
 	.content {
 		height: 100vh;
 		overflow-x: hidden;
 		overflow-y: auto;
 		padding-top: 90px;
-		padding-bottom: 30px;
+		padding-bottom: 50px;
 	}
 </style>

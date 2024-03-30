@@ -54,7 +54,10 @@
 		Math.max(...arrayMaxBeban) * 6.8 * 0.1917 < 600
 			? Math.max(...arrayMaxBeban) * 6.8 * 0.1917
 			: 600;
-	const rampRate = Math.max(...arrayRampRate) * 6.8 * 0.1917 < 200 ? Math.max(...arrayRampRate) * 6.8 * 0.1917 : 200;
+	const rampRate =
+		Math.max(...arrayRampRate) * 6.8 * 0.1917 < 200
+			? Math.max(...arrayRampRate) * 6.8 * 0.1917
+			: 200;
 
 	const datas = [
 		{ x: x1, y: y1, tanggal: tanggal1[0] },
@@ -67,7 +70,7 @@
 	<div>
 		<h1 class="text-center">OPTIMIZATION RESULT</h1>
 	</div>
-	<div class="row gx-0 mb-4">
+	<div class="row gx-0 mb-4 bg-white p-4 border">
 		{#each datas as data, index}
 			<div class="col-4 d-flex flex-column">
 				<ChartIrradiance
@@ -85,13 +88,13 @@
 			</div>
 		{/each}
 	</div>
-	<div class="mb-5">
+	<div class="mb-4 bg-white p-4 border">
 		<ChartIrradiance x={x4} y={y4} title={`Forecast Global Irradiance ${getTomorrow()}`} />
 	</div>
 	<!-- <div class="mb-5">
 		<ChartIrradiance x={x5} y={y5} title={'Forecast Produksi PV + BSS'} />
 	</div> -->
-	<div class="row border rounded-4 px-2 py-3 shadow">
+	<div class="row border px-2 py-3 bg-white">
 		<div class="col-6">
 			<h5 class="mb-3">Forecast Produksi {getTomorrow()}</h5>
 			<div class="mb-3 row">
@@ -161,7 +164,12 @@
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-6 col-form-label">Setting Ramp Rate</label>
 				<div class="col-4">
-					<input type="text" class="form-control text-center" value={rampRate == 200 ? 200 : rampRate.toFixed(2)} disabled />
+					<input
+						type="text"
+						class="form-control text-center"
+						value={rampRate == 200 ? 200 : rampRate.toFixed(2)}
+						disabled
+					/>
 				</div>
 				<label for="inputPassword" class="col-2 col-form-label">kW/s</label>
 			</div>
@@ -194,5 +202,8 @@
 	h5 {
 		font-weight: 700;
 		color: #43a6a3;
+	}
+	.border {
+		border-radius: 25px;
 	}
 </style>

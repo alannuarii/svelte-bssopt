@@ -5,7 +5,6 @@
 	export let dataBMS;
 
 	const tanggalData = arrayDate();
-	
 
 	// Contoh penggunaan
 	var angkaDesimal = 5.5;
@@ -80,7 +79,7 @@
 				</div>
 				<div class="row">
 					<div class="col-1"><h6>Usia:</h6></div>
-					<div class="col text-start"><h6>{konversiTahunBulan((bms.rul - 1600)/75)}</h6></div>
+					<div class="col text-start"><h6>{konversiTahunBulan((bms.rul - 1600) / 75)}</h6></div>
 				</div>
 			</div>
 		{/each}
@@ -102,5 +101,8 @@
 	.output p {
 		margin: 0;
 		font-size: 8px;
+	}
+	.form-control {
+		background-color: #ffffff;
 	}
 </style>

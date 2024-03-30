@@ -10,7 +10,9 @@
 	<div class="container-fluid">
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a class="navbar-brand text-dark ms-3 d-flex align-items-center" href="/"
-			>BSS optima<span class="ms-2">| Machine Learning Based Battery Storage System Parameters Optimization</span></a
+			>BSS optima<span class="ms-2"
+				>| Machine Learning Based Battery Storage System Parameters Optimization</span
+			></a
 		>
 		<div class="ms-auto me-5"><Timer /></div>
 		<div class="me-4 reload">
@@ -75,7 +77,7 @@
 	}
 	span {
 		font-weight: 100;
-		font-size: 18px;
+		font-size: 15px;
 		margin: 0px;
 	}
 </style>

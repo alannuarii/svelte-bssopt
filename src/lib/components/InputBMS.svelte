@@ -84,4 +84,7 @@
 	.outer {
 		border-color: #43a6a3 !important;
 	}
+	.form-control {
+		background-color: #ffffff;
+	}
 </style>

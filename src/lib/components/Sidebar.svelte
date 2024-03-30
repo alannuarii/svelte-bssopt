@@ -98,20 +98,24 @@
 			</a>
 		</li>
 	</ul>
-	<div class="powered d-flex flex-column justify-content-center align-items-center py-2">
-		<p class="mb-1">Powered by</p>
+	<div class="powered position-absolute bottom-0 start-0 mb-3 ms-3">
 		<img src={pnp} class="img-fluid pnp mb-1" alt="" />
 	</div>
 </div>
 
 <style>
 	#sidebar {
+		color: #ffffff;
 		width: 100%;
 		height: 100vh;
-		background-color: #403d39;
-		border-right: 5px solid #43a6a3;
-		border-radius: 0 0 40px 0;
+		background-color: #43a6a3;
+		background-image: url('../img/bolt.png');
+		background-position: left;
+		background-repeat: no-repeat;
+		background-size: 180%;
+		border-radius: 0 0 150px 0;
 	}
+	/* #43a6a3 */
 	a {
 		text-decoration: none;
 		color: #ffffff !important;
@@ -126,7 +130,7 @@
 		height: 100px;
 	}
 	.pnp {
-		width: 60%;
+		width: 10%;
 	}
 	i,
 	.nav-link {
@@ -134,14 +138,6 @@
 		font-weight: 300;
 		padding: 10px 10px;
 		font-size: 1vw;
-	}
-	.powered {
-		background-color: #ffffff;
-		border-radius: 15px;
-	}
-	.powered p {
-		margin: 0px;
-		font-size: 12px;
 	}
 	.list-group-item {
 		font-weight: 300;
