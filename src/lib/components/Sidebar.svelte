@@ -1,6 +1,6 @@
 <script>
 	import icon from '$lib/img/icon.png';
-	import pnp from '$lib/img/pnp.png';
+	import pnp from '$lib/img/np.png';
 
 	const status = 2;
 
