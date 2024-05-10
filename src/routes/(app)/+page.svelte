@@ -186,13 +186,13 @@
 						{#if bss2 === 1}
 							<a href="output/bss2"><img src={bssOn} alt="" /></a>
 							<div class="on py-2 mt-1">
-								<h6>BSS 1</h6>
+								<h6>BSS 2</h6>
 								<p>(Stand by)</p>
 							</div>
 						{:else if bss1 === 0}
 							<a href="output/bss2"><img src={bssOff} alt="" /></a>
 							<div class="off py-2 mt-1">
-								<h6>BSS 1</h6>
+								<h6>BSS 2</h6>
 								<p>(Pemeliharaan)</p>
 							</div>
 						{/if}
