@@ -38,7 +38,7 @@
 	</div>
 	<div class="d-flex flex-wrap flex-row justify-content-evenly">
 		{#each dataBMS as bms}
-			<div class="output border rounded-4 p-2 text-center mb-2">
+			<div class="output border rounded-4 p-2 text-center mb-2 bg-white">
 				<h5 class="text-center">BMS {bms.id_bms}</h5>
 				<p>Capacity</p>
 				<div
