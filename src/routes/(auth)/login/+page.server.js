@@ -15,7 +15,7 @@ export const actions = {
 			parsedData[name] = value;
 		}
 
-		const res = await fetch(`${API_AUTH}/login`, {
+		const res = await fetch(`${API_AUTH}/api/login`, {
 			method: 'POST',
 			body: JSON.stringify(parsedData),
 			headers: {
