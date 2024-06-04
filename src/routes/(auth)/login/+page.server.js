@@ -10,7 +10,7 @@ export const actions = {
 		formData.set('email', data.get('email'));
 		formData.set('password', data.get('password'));
 
-        const res = await fetch(`${API_ENDPOINT}/api/login`, {
+        const res = await fetch(`${API_AUTH}/api/login`, {
             method: 'POST',
             body: formData
         });
