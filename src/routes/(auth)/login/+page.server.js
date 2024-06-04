@@ -10,18 +10,10 @@ export const actions = {
 		formData.set('email', data.get('email'));
 		formData.set('password', data.get('password'));
 
-		const parsedData = {};
-		for await (const [name, value] of formData.entries()) {
-			parsedData[name] = value;
-		}
-
-		const res = await fetch(`${API_AUTH}/api/login`, {
-			method: 'POST',
-			body: JSON.stringify(parsedData),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+        const res = await fetch(`${API_ENDPOINT}/api/login`, {
+            method: 'POST',
+            body: formData
+        });
 
 		const result = await res.json();
 
