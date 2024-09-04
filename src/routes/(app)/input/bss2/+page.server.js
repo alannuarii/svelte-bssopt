@@ -10,7 +10,7 @@ export const actions = {
 		formData.append('voltage', data.get('voltage'));
 		formData.append('temperature', data.get('temperature'));
 
-		const res = await fetch(`${API_ENDPOINT}/uploadbms`, {
+		const res = await fetch(`${API_ENDPOINT}/uploadbms/bss2`, {
 			method: 'POST',
 			body: formData
 		});
